@@ -25,8 +25,8 @@ namespace WspólnySpecFlowProject.Steps
             driver.Navigate().GoToUrl("http://saucedemo.com");
         }
         
-        [Then(@"Homepage shoul appear")]
-        public void ThenHomepageShoulAppear()
+        [Then(@"Homepage should appear")]
+        public void ThenHomepageShouldAppear()
         {
             Assert.IsTrue(driver.FindElement(By.ClassName("login_logo")).Displayed);
         }
