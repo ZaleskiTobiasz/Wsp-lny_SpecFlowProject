@@ -14,7 +14,7 @@ Scenario: Logging in with valid username and password
 	And I enter valid password
 	Then I successfully log in
 
-	@ToCart
+@ToCart
 Scenario: Adding products to cart
 	Given I open saucedemo.com
 	And I log in using valid credentials
