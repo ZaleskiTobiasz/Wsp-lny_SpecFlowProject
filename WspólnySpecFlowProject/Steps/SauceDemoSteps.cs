@@ -22,7 +22,7 @@ namespace WspólnySpecFlowProject.Steps
         public void GivenINavigateToSaucedemo_Com()
         {
             driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
-            driver.Navigate().GoToUrl("http://saucedemo.com");
+            Utility.NavigateTo("http://saucedemo.com", driver);
         }
         
         [Then(@"Homepage should appear")]
