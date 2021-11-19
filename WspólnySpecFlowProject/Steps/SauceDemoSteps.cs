@@ -24,7 +24,9 @@ namespace WspólnySpecFlowProject.Steps
         public void GivenINavigateToSaucedemo_Com(string url)
         {
             driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
+
             Navigate(driver, url);
+
         }
         
         [Then(@"Homepage should appear")]
