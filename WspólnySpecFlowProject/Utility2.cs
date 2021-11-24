@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
+using TechTalk.SpecFlow;
+using WspólnySpecFlowProject.Drivers;
 
 namespace WspólnySpecFlowProject
 {
@@ -23,6 +25,10 @@ namespace WspólnySpecFlowProject
             var script = "arguments[0].scrollIntoView(true);";
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript(script, element);
+        }
+        public static IWebDriver DriverSetup(ScenarioContext scenarioContext)
+        {
+            return scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
         }
 
     }
