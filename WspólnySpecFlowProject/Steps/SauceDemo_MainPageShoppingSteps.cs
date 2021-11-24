@@ -1,15 +1,12 @@
 ﻿using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
-using WspólnySpecFlowProject.Drivers;
 using static WspólnySpecFlowProject.Utility2;
 using static WspólnySpecFlowProject.Pages.SauceDemoLogging_Page;
 using static WspólnySpecFlowProject.Pages.SauceDemoMainPage;
 using static WspólnySpecFlowProject.Pages.SauceDemoCheckoutPage;
 using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Interactions;
 using System.Threading;
 
 namespace WspólnySpecFlowProject.Steps
@@ -18,18 +15,19 @@ namespace WspólnySpecFlowProject.Steps
     public class SauceDemo_MainPageShoppingSteps
     {
         private readonly ScenarioContext _scenarioContext;
+        static IWebDriver driver;
+
 
         public SauceDemo_MainPageShoppingSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }
 
-        static IWebDriver driver;
 
         [Given(@"I enter correct url")]
         public void GivenIEnterCorrectUrl()
         {
-            driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
+            driver = DriverSetup(_scenarioContext);
             Navigate(driver, UrlToLoggingPage());
         }
         
@@ -66,7 +64,7 @@ namespace WspólnySpecFlowProject.Steps
         [Given(@"Navigate to correct URL")]
         public void GivenNavigateToCorrectURL()
         {
-            driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
+            driver = DriverSetup(_scenarioContext);
             Navigate(driver, UrlToLoggingPage());
         }
 
