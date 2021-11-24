@@ -19,8 +19,7 @@ namespace WspólnySpecFlowProject.Drivers
 
 		public IWebDriver Setup()
 		{
-			var chromeOptions = new ChromeOptions(); // zbedne ?
-
+		
 			driver = new ChromeDriver();
 
 			_scenarioContext.Set(driver, "WebDriver");
