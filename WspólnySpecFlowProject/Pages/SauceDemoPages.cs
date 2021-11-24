@@ -44,5 +44,13 @@ namespace WspólnySpecFlowProject.Pages
 			int basketCounter = Int32.Parse(driver.FindElement(By.XPath("//span[.='2']")).Text);
 			return basketCounter;
 		}
+		public static IWebElement LinkedInIconButton(IWebDriver driver)
+		{
+			return driver.FindElement(By.XPath("//*[@id=\"page_wrapper\"]/footer/ul/li[3]/a"));
+		}
+		public static IWebElement LinkedInSingingUpPage(IWebDriver driver)
+		{
+			return driver.FindElement(By.XPath("/html/body/main/div/div/form[2]/h1"));
+		}
 	}
 }

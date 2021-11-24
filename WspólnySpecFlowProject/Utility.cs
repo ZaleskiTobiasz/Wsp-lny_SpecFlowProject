@@ -12,5 +12,11 @@ namespace WspólnySpecFlowProject
 		{
 			driver.Navigate().GoToUrl(url);
 		}
+		public static void ScrollToElementMarekTest(IWebDriver driver, IWebElement element)
+		{
+			var script = "arguments[0].scrollIntoView(true);";
+			IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+			js.ExecuteScript(script, element);
+		}
 	}
 }

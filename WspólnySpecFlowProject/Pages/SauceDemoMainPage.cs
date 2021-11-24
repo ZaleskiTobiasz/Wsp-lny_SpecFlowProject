@@ -49,5 +49,6 @@ namespace WspólnySpecFlowProject.Pages
         {
             return driver.FindElement(By.CssSelector("#shopping_cart_container > a"));
         }
+       
     }
 }

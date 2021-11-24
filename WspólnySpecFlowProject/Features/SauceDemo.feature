@@ -21,3 +21,13 @@ Scenario: Adding products to cart
 	When I add to cart first product
 	And I add to cart second product
 	Then Shopping cart contains 2 products
+
+@TestMarka
+Scenario: Going to Linkedin company page
+	Given I open the"http://saucedemo.com"
+	And I am logging in using valid credentials
+	And I scroll page down
+	When I click on Linkedin ikon on left right side of the page
+	Then Linkedin sign in page is opened
+
+

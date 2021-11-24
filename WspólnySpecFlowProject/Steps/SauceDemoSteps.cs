@@ -5,6 +5,8 @@ using TechTalk.SpecFlow;
 using WspólnySpecFlowProject.Drivers;
 using static WspólnySpecFlowProject.Utility;
 using static WspólnySpecFlowProject.Pages.SauceDemoPages;
+using System.Threading;
+using System.Linq;
 
 namespace WspólnySpecFlowProject.Steps
 {
@@ -25,7 +27,7 @@ namespace WspólnySpecFlowProject.Steps
         {
             driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
 
-            Navigate(driver, url);
+            Utility.Navigate(driver, url);
 
         }
         
@@ -39,7 +41,7 @@ namespace WspólnySpecFlowProject.Steps
         public void GivenIOpenHomepage(string url)
         {
             driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
-            Navigate(driver, url);
+            Utility.Navigate(driver, url);
         }
 
         [When(@"I enter valid username")]
@@ -71,7 +73,7 @@ namespace WspólnySpecFlowProject.Steps
         public void GivenIOpenSaucedemo_Com(string url)
         {
             driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
-            Navigate(driver, url);
+            Utility.Navigate(driver, url);
         }
 
         [Given(@"I log in using valid credentials")]
@@ -103,5 +105,48 @@ namespace WspólnySpecFlowProject.Steps
         {
             Assert.AreEqual(BasketCounter(driver), number);
         }
+
+        [Given(@"I open the""(.*)""")]
+        public void GivenIOpenThe(string url)
+        {
+            driver = _scenarioContext.Get<SeleniumDriver>("SeleniumDriver").Setup();
+
+            Utility.Navigate(driver, url);
+        }
+
+        [Given(@"I am logging in using valid credentials")]
+        public void GivenIamLogInUsingValidCredentials()
+        {
+            UsernameInput(driver).Click();
+            UsernameInput(driver).Clear();
+            UsernameInput(driver).SendKeys("standard_user");
+            PasswordInput(driver).Click();
+            PasswordInput(driver).Clear();
+            PasswordInput(driver).SendKeys("secret_sauce");
+            LoginButton(driver).Click();
+        }
+
+        [Given(@"I scroll page down")]
+        public void GivenIScrollPageDown()
+        {
+            ScrollToElementMarekTest(driver, LinkedInIconButton(driver));
+            Thread.Sleep(500);
+        }
+
+        [When(@"I click on Linkedin ikon on left right side of the page")]
+        public void WhenIClickOnLinkedinIkonOnLeftRightSideOfThePage()
+        {
+            LinkedInIconButton(driver).Click();
+            Thread.Sleep(5000);
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+        }
+        
+
+        [Then(@"Linkedin sign in page is opened")]
+        public void ThenLinkedinSignInPageIsOpened()
+        {
+            Assert.IsTrue(LinkedInSingingUpPage(driver).Displayed);
+        }
+
     }
 }
