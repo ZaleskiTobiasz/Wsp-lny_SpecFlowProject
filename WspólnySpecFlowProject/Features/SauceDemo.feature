@@ -4,8 +4,13 @@
 
 @HomePage
 Scenario: Open homepage
-	Given I navigate to "http://saucedemo.com"
+	Given I navigate to "<html>"
 	Then Homepage should appear
+	Examples:
+	| html                 |
+	| http://google.com    |
+	| http://saucedemo.com |
+	| http://onet.pl       |
 
 @Login
 Scenario: Logging in with valid username and password
